@@ -24,4 +24,4 @@ for msg in consumer:
 
     print("Predictions:", np.array(loaded_model.predict(data)))
     prod_data.append(data)
-    pd.DataFrame(prod_data).to_csv("data/prod_data.csv", mode='a', index=False, header=False)
+    pd.DataFrame(prod_data[0]).to_csv("data/prod_data.csv", mode='a', index=False, header=False)
