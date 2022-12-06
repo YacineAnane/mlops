@@ -16,10 +16,10 @@ consumer = KafkaConsumer(
 
 print("Start consumming")
 for msg in consumer:
-    data = msg.value["X"]
-    print(data)
-    if len(data) != 5:
-        print("Data shape is incorrect. Expected 5, Got", len(data))
+    data = np.array(msg.value["X"])
+
+    if data.shape[-1] != 5:
+        print("Data shape is incorrect. Expected 5, Got", data.shape)
         continue
 
     print("Predictions:", np.array(loaded_model.predict(data)))
