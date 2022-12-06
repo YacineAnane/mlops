@@ -4,7 +4,8 @@ import pandas as pd
 import json
 import joblib
 
-loaded_model = joblib.load("random_forest.joblib")
+print("Loading model")
+loaded_model = joblib.load("model/random_forest.joblib")
 prod_data = []
 
 topic = "view-count_producer"
@@ -13,12 +14,14 @@ consumer = KafkaConsumer(
         value_deserializer = lambda x: json.loads(x.decode("utf-8")),
         bootstrap_servers="localhost:9092")
 
+print("Start consumming")
 for msg in consumer:
     data = msg.value["X"]
+    print(data)
     if len(data) != 5:
         print("Data shape is incorrect. Expected 5, Got", len(data))
         continue
 
-    print("Prediction:", np.array(loaded_model.predict(data)))
+    print("Predictions:", np.array(loaded_model.predict(data)))
     prod_data.append(data)
-    pd.DataFrame(prod_data).to_csv("../data/prod_data.csv", mode='a', index=False, header=False)
+    pd.DataFrame(prod_data).to_csv("data/prod_data.csv", mode='a', index=False, header=False)
