@@ -10,7 +10,7 @@ if len(sys.argv) != 2 or not sys.argv[1].endswith(".csv"):
 
 data = pd.read_csv(sys.argv[1])
 
-topic = "view-count_producer"
+topic = "youtube_data"
 producer = KafkaProducer(
         value_serializer=lambda x: json.dumps(x).encode("utf-8"),
         bootstrap_servers="localhost:9092")
