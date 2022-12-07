@@ -11,7 +11,7 @@ size = int(sys.argv[1])
 
 dataframe = pd.read_csv("data/train.csv").iloc[:, -5:]
 dataframe_summary = dataframe.describe()
-random_data = [pd.Series(np.random.normal(dataframe_summary.loc["mean", col], dataframe_summary.loc["std", col], size)) for col in dataframe.columns]
+random_data = [pd.Series(np.abs(np.random.normal(dataframe_summary.loc["mean", col], dataframe_summary.loc["std", col], size))) for col in dataframe.columns]
 concat = pd.concat(random_data, axis=1)
 concat.columns = dataframe.columns
 for col in ["subscribers", "totalVideos", "totalViews"]:
