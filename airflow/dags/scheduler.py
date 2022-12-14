@@ -21,7 +21,7 @@ default_args = {
 }
 
 
-def check_data_drift(output_file="~/Bureau/mlops/report.html", title="Data drift report"):
+def check_data_drift(output_file="Bureau/mlops/report.html", title="Data drift report"):
   sd = SmartDrift(
     pd.read_csv('~/Bureau/mlops/data/random_data.csv'),
     pd.read_csv('~/Bureau/mlops/data/train.csv'),
