@@ -1,7 +1,8 @@
-kafka
+apache-airflow
+kafka-python
 numpy
 pandas
 joblib
-json
 streamlit
-scikit-learn==1.1.1
+scikit-learn
+eurybia

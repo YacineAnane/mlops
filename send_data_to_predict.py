@@ -15,8 +15,8 @@ producer = KafkaProducer(
         value_serializer=lambda x: json.dumps(x).encode("utf-8"),
         bootstrap_servers="localhost:9092")
 
-
-message = {"X": [list(x) for x in data.values]}
+data = [list(x) for x in data.values]
+message = {"X": data}
 
 producer.send(topic, message)
 producer.flush()
