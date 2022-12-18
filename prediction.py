@@ -5,7 +5,7 @@ import json
 import joblib
 
 # Loading model
-loaded_model = joblib.load("model/random_forest.joblib")
+loaded_model = joblib.load("deployement/model.joblib")
 
 # Init topics
 consumed_topic = "youtube_data"

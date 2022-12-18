@@ -21,7 +21,7 @@ default_args = {
 }
 
 
-def check_data_drift(output_file="Bureau/mlops/report.html", title="Data drift report"):
+def check_data_drift(output_file="report.html", title="Data drift report"):
   sd = SmartDrift(
     pd.read_csv('~/Bureau/mlops/data/random_data.csv'),
     pd.read_csv('~/Bureau/mlops/data/train.csv'),
@@ -37,7 +37,7 @@ def check_data_drift(output_file="Bureau/mlops/report.html", title="Data drift r
     )
 
 default_args = {
-		'owner': 'Charli',
+		'owner': 'UNICORNSOCIETY',
 		'start_date': datetime(2022, 12, 10),
 		'retries': 3,
 		'retry_delay': timedelta(minutes=5)
